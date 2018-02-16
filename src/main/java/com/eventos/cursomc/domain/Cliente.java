@@ -28,6 +28,8 @@ public class Cliente implements Serializable{
 	
 	private String nome;
 	private String email;
+	
+	@Column(name = "cpf_cnpj")
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
@@ -39,6 +41,9 @@ public class Cliente implements Serializable{
 	@CollectionTable(name = "TELEFONE")
 	@Column(name = "numero")
 	private Set<String> telefones = new HashSet<>();
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente() {
 	}
@@ -106,6 +111,14 @@ public class Cliente implements Serializable{
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override

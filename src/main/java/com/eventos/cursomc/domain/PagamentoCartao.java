@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import com.eventos.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @Entity
+@JsonTypeName("pagamentoCartao")
 public class PagamentoCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
 	
